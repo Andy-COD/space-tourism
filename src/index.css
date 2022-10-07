@@ -201,7 +201,7 @@ nav::after {
 .destination-content li {
   display: inline-block;
   margin-right: 2rem;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   position: relative;
 }
 .destination-content li::after {
