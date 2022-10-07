@@ -53,7 +53,7 @@ function Crew() {
                   backgroundImage: "url(" + webp + ")",
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
+                  backgroundPosition: "center bottom",
                   height: "calc(100vh - 150px)",
                 }}
               ></div>
