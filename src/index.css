@@ -147,6 +147,7 @@ nav::after {
   background-color: white;
   text-align: center;
   color: black;
+  text-transform: uppercase;
   border-radius: 50%;
   font-size: 2rem;
   font-weight: 100;
