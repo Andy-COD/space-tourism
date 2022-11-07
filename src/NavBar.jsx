@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar() {
-  // const navStyles = ({ isActive }) => {
-  //   return {
-  //     borderBottom: isActive ? "2px solid rgb(255, 254, 254)" : "",
-  //     PointerEvents: isActive ? "none" : "all",
-  //   };
-  // };
   const [open, setIsOpen] = useState(false);
   return (
     <header>
