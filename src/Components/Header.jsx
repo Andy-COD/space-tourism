@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function NavBar() {
+const Header = () => {
   const [open, setIsOpen] = useState(false);
+  const handleRouteClick = () => {
+    setIsOpen(!open);
+  }
   return (
     <header>
       <nav>
@@ -35,25 +38,25 @@ function NavBar() {
         ></div>
       </nav>
       {open && (
-        <div className="sideNav">
+        <div className={`sideNav ${open && "show"}`}>
           <ul>
             <li>
-              <NavLink end to="/" className="nav-btn">
+              <NavLink end to="/" className="nav-btn" onClick={handleRouteClick}>
                 <span>00</span> Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/destination" className="nav-btn">
+              <NavLink to="/destination" className="nav-btn" onClick={handleRouteClick}>
                 <span>01</span> Destinations
               </NavLink>
             </li>
             <li>
-              <NavLink to="/crew" className="nav-btn">
+              <NavLink to="/crew" className="nav-btn" onClick={handleRouteClick}>
                 <span>02</span> Crew
               </NavLink>
             </li>
             <li>
-              <NavLink to="/technology" className="nav-btn">
+              <NavLink to="/technology" className="nav-btn" onClick={handleRouteClick}>
                 <span>03</span> Technology
               </NavLink>
             </li>
@@ -62,6 +65,6 @@ function NavBar() {
       )}
     </header>
   );
-}
+};
 
-export default NavBar;
+export default Header;

@@ -1,36 +1,29 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  createBrowserRouter,
+  createRoutesFromElements,
   Route,
-  Routes,
-  useLocation,
+  RouterProvider,
 } from "react-router-dom";
-import Home from "./Home";
-import Destination from "./Destination";
-import Crew from "./Crew";
-import Technology from "./Technology";
-import { AnimatePresence } from "framer-motion";
-
-const Animated = () => {
-  const location = useLocation();
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/destination" element={<Destination />} />
-        <Route path="/crew" element={<Crew />} />
-        <Route path="/technology" element={<Technology />} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
+import Home from "./Pages/Home";
+import Destination from "./Pages/Destination";
+import Crew from "./Pages/Crew";
+import Technology from "./Pages/Technology";
+import SharedLayout from "./Pages/SharedLayout";
 
 function App() {
-  return (
-    <Router>
-      <Animated />
-    </Router>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="destination" element={<Destination />} />
+        <Route path="crew" element={<Crew />} />
+        <Route path="technology" element={<Technology />} />
+      </Route>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

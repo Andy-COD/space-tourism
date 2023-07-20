@@ -17,14 +17,20 @@ li {
   font-family: "Barlow Condensed", sans-serif;
 }
 body {
-  overflow-x: hidden;
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
   color: white;
-  background-color: rgb(8, 30, 48);
+  background-color: rgb(4, 10, 16);
 }
 header {
   width: 100%;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 nav {
   width: 100%;
@@ -32,6 +38,7 @@ nav {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   margin-top: 2rem;
+  overflow: hidden;
 }
 nav img {
   padding-left: 1rem;
@@ -99,18 +106,21 @@ nav::after {
   left: 17rem;
   top: 4.1rem;
 }
+main {
+  z-index: 1;
+}
 /* =================== HOME ============================ */
 .home {
   background: url(../public/assets/home/background-home-desktop.jpg);
   background-size: cover;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+}
+.home-container {
+  padding-top: 100px;
+  padding-bottom: 10rem;
 }
 .home section {
   padding-top: 10rem;
@@ -125,28 +135,29 @@ nav::after {
   padding-bottom: 1rem;
 }
 .home-desc span {
-  font-size: 6rem;
+  font-size: 7rem;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-.home-desc p {
-  width: 45%;
+.home-desc > p {
+  width: 70%;
   font-weight: 100;
+  font-size: 1.5rem;
   color: rgba(190, 190, 190, 0.733);
-  padding-top: 2rem;
+  padding-top: 1.5rem;
 }
 .explore {
   align-self: center;
+  padding: 3rem;
   border-radius: 50%;
   pointer-events: none;
   transition: background 1s ease;
 }
 .explore p {
-  margin: 3rem;
-  padding: 5rem;
   background-color: white;
   text-align: center;
   color: black;
+  padding: 3.5em;
   text-transform: uppercase;
   border-radius: 50%;
   font-size: 2rem;
@@ -162,13 +173,13 @@ nav::after {
   background: url(../public/assets/destination/background-destination-desktop.jpg);
   background-size: cover;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+}
+.dest-container {
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .destination section > p {
   padding-left: 7rem;
@@ -180,9 +191,8 @@ nav::after {
 .destination section > p span {
   color: rgba(252, 252, 252, 0.575);
 }
-.selected {
-  padding-bottom: 4px;
-  border-bottom: 3px solid white;
+.selected::after {
+  transform: scaleX(1);
 }
 .sect-dest {
   width: 80%;
@@ -192,7 +202,8 @@ nav::after {
   margin-top: 2.5rem;
 }
 .sect-dest img {
-  width: 35%;
+  min-width: 50%;
+  max-height: 600px;
 }
 .destination-content {
   display: flex;
@@ -268,12 +279,11 @@ nav::after {
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
 }
-.crew > p {
+.crew-container {
+  padding-top: 100px;
+}
+.crew-container > p {
   padding-left: 5.6rem;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -283,7 +293,7 @@ nav::after {
 .crew > p span {
   color: rgba(252, 252, 252, 0.575);
 }
-.crew > article {
+.crew-container > article {
   width: 100%;
   display: grid;
   grid-template-columns: 60% 40%;
@@ -311,6 +321,7 @@ nav::after {
 }
 .crew-content > article h3 {
   width: 100%;
+  height: auto;
   font-size: 4rem;
   text-transform: uppercase;
   font-weight: 100;
@@ -349,26 +360,27 @@ nav::after {
 .tech {
   background: url(../public/assets/technology/background-technology-desktop.jpg);
   background-size: cover;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
 }
-.tech > p {
+.tech-container {
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 4rem;
+}
+.tech-container > p {
   padding-left: 5.6rem;
   font-size: 1.5rem;
   text-transform: uppercase;
   word-spacing: 6px;
   margin-top: 2.5rem;
 }
-.tech > p span {
+.tech-container > p span {
   color: rgba(252, 252, 252, 0.575);
 }
-.tech > article {
+.tech-container > article {
   width: 100%;
   height: 100%;
   display: flex;
@@ -413,7 +425,7 @@ nav::after {
 }
 .tech-content > p:last-child {
   color: rgba(252, 252, 252, 0.575);
-  width: 60%;
+  min-width: 60%;
 }
 /*====================== Tablet CSS======================= */
 @media (min-width: 320px) and (max-width: 780px) {
@@ -432,7 +444,6 @@ nav::after {
   /* ================Technology ========================= */
   .tech {
     background-image: url("../public/assets/technology/background-technology-tablet.jpg");
-    overflow-y: scroll;
   }
   .tech article {
     flex-direction: column-reverse;
@@ -480,7 +491,6 @@ nav::after {
   /*============================ Crew ======================== */
   .crew {
     background-image: url(../public/assets/crew/background-crew-tablet.jpg);
-    overflow-y: scroll;
   }
   .crew article {
     display: flex;
@@ -512,7 +522,6 @@ nav::after {
   /* ================= Destination ==================== */
   .destination {
     background-image: url(../public/assets/destination/background-destination-tablet.jpg);
-    overflow-y: scroll;
   }
   .destination section > p {
     padding-left: 3rem;
@@ -522,7 +531,7 @@ nav::after {
     row-gap: 3rem;
   }
   .sect-dest > img {
-    width: 60%;
+    width: 100%;
     margin: auto;
   }
   .destination-content {
@@ -563,7 +572,6 @@ nav::after {
   /* ============== Home ====================== */
   .home {
     background-image: url(../public/assets/home/background-home-tablet.jpg);
-    overflow-y: scroll;
   }
   .home section {
     width: 100%;
@@ -598,7 +606,6 @@ nav::after {
     margin-top: 5rem;
   }
   .explore p {
-    padding: 3.5rem;
     margin: 2rem;
   }
 }
@@ -621,7 +628,7 @@ nav::after {
     top: 1.8rem;
   }
   .burger {
-    z-index: 3;
+    z-index: 12;
     width: 2rem;
     height: 2rem;
     margin-top: 5px;
@@ -632,20 +639,26 @@ nav::after {
   }
   .sideNav {
     display: block;
-    z-index: 1;
+    z-index: 10;
     position: absolute;
     width: 80%;
     height: 100vh;
     content: "";
     top: 0;
     right: 0;
+    transform: scaleX(0);
+    transition: all .5s ease-in-out;
     background: rgba(255, 255, 255, 0.11);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
   }
+  .show {
+    transform: scaleX(1);
+  }
   .sideNav ul {
     width: 100%;
+    min-height: 100vh;
     padding-left: 3rem;
     margin-top: 4rem;
     list-style-type: none;
@@ -683,6 +696,10 @@ nav::after {
   }
   .explore {
     margin-top: 2rem;
+    padding: 1rem;
+  }
+  .explore p {
+    padding: 2.5em;
   }
   /* ============== Destination ============= */
   .destination {
